@@ -8,10 +8,12 @@ function show(msg) {
   });
 };
 
+// 监听来自 web 的消息
 chrome.extension.onRequest.addListener(function(request,sender,sendResponse){
 	if(request.msg){
 		show(request.msg);
 		sendResponse({ret: 'ok'});
 	}
 });
+
 

@@ -20,15 +20,22 @@ fire.onclick=function(){
 	lock=1;
 	console.log("fire...");
 	chromeExtension.sendRequest(
-		function(){return {msg: content.value}},
+		{msg: content.value},
 		function(json){
 			console.log('回调成功');
 		}
 	);
-	chromeExtension.onRequest=function(json){
-		console.log(json);
-	}
 }
+
+//监听 chromeExtension 事件
+
+document.addEventListener("chromeExtensionComplete",function(){
+	chromeExtension.onRequest=function(json){
+		console.log("来自 content_scripts 的报时：" + json.time);
+	}
+});
+
+
 </script>
 </body>
 </html>

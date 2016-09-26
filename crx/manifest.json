@@ -16,7 +16,7 @@
     },
     "content_scripts":[
       {
-        "js":["background.js","communication.js"], // content_scripts 列表
+        "js":["communication.js","content.js"], // content_scripts 列表
         "matches":["*://*/*","file://*"]
       }
     ],
