@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>DEMO</title>
+</head>
+<body>
+
+<input value="给扩展程序发一段消息" type="text" id="content">
+	
+<button id="fire">fire</button>
+
+<script type="text/javascript">
+	/*
+@网页上调用chromeExtension.onRequest=function(json,sendResponse){json为请求数据，sendResponse(_json);向请求页响应结果};来接收contentscript发过来的消息
+	@网页上调用chromeExtension.sendRequest(function(){return {key:value,key:value....}},function(json){回调处理});来向content_scripts发送信息
+	*/
+var lock=0;
+fire.onclick=function(){
+	lock=1;
+	console.log("fire...");
+	chromeExtension.sendRequest(
+		function(){return {msg: content.value}},
+		function(json){
+			console.log('回调成功');
+		}
+	);
+	chromeExtension.onRequest=function(json){
+		console.log(json);
+	}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+    "name": "一个简单的例子",
+    "version": "1.0.1",
+    "manifest_version": 2,
+    "description": "测试案例",//非必选项
+    "icons": {
+        "48": "icon.png"//非必选项，这里是在扩展程序页面上显示的图标，建议还是要指定的
+    },
+    "browser_action": {//非必选
+      "default_title": "测试案例标题",//鼠标悬浮在图标上是显示的文字，不写的话，会直接使用name的文案
+      "default_icon": "icon.png",//在浏览器右上角显示的图标
+      "default_popup": "popup.html"//弹出小窗口
+    },
+    "background":{
+      "page":"background.html" // 后台进程文件
+    },
+    "content_scripts":[
+      {
+        "js":["background.js","communication.js"], // content_scripts 列表
+        "matches":["*://*/*","file://*"]
+      }
+    ],
+    "permissions": [
+      "notifications"
+    ]
+
+}
