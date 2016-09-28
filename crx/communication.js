@@ -31,7 +31,7 @@ var sendPageRequest;//向页面发送响应
 !function(){
 	var json={},_this={};
 	var pageReciver=document.createElement('textarea'),content_script_reciever=document.createElement('textarea'),recieveId=document.createElement('input');
-	recieveId.style.cssText=content_script_reciever.style.cssText=pageReciver.style.cssText='width:0px; height:0px; overflow:hidden; left:-100%; top:-100%; visibility:hidden;',content_script_reciever.id="content_script_reciever",pageReciver.id="pageReciver",recieveId.id="recieveId";
+	recieveId.style.cssText=content_script_reciever.style.cssText=pageReciver.style.cssText='width:0px; height:0px; overflow:hidden; left:-100%; top:-100%; visibility:hidden; position: absolute;',content_script_reciever.id="content_script_reciever",pageReciver.id="pageReciver",recieveId.id="recieveId";
 	//recieveId即回调的ID是一个随机时间值，用于响应回调
 	content_script_reciever.addEventListener('click',function(){
 		eval('json='+this.value);
